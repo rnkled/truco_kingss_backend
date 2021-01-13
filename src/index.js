@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('./database');
+const cors = require('cors');
 
 const app = express();
 const port = 8888;
 
+app.use(cors());
 
 app.use(express.json());
 

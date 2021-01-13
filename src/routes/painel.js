@@ -7,7 +7,7 @@ router.use((req, res, next) => {
     next();
 });
 
-router.post('/getUsers', async (req, res) => {
+router.get('/getUsers', async (req, res) => {
     try {
         let allUsers = await User.find({});
         console.log('Consulta de Usuarios')

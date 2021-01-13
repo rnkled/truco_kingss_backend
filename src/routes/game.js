@@ -1,14 +1,13 @@
 var express = require('express');
+var validationMiddleware = require('../services/validationMiddleware');
 var router = express.Router();
+const User = require('../database/models/user');
 
-router.use(function timeLog(req, res, next) {
-    console.log('Time: ', Date.now());
-    next();
-});
-router.get('/', (req, res) => {
+router.use(validationMiddleware);
+
+router.get('/', async (req, res) => {
     let data = req.body;
-    console.log(data);
-    res.send('game');
+    res.send(await User.findById(req.userId));
 });
 
 module.exports = router;
